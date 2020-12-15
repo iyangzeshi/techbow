@@ -84,101 +84,101 @@ public class Leetcode0126WordLadderIi {
 		System.out.println();
 	}
 	
-	//leetcode submit region begin(Prohibit modification and deletion)
-	class Solution {
+//leetcode submit region begin(Prohibit modification and deletion)
+class Solution {
+	
+	public List<List<String>> findLadders(String beginWord, String endWord,
+			List<String> wordList) {
 		
-		public List<List<String>> findLadders(String beginWord, String endWord,
-				List<String> wordList) {
-			
-			//also return all shortest path
-			//first calculation the shortest length;
-			List<List<String>> res = new ArrayList<>();
-			HashSet<String> wordSet = new HashSet<>();
-			for (String str : wordList) {
-				wordSet.add(str);
-			}
-			Queue<String> queue = new LinkedList<>();
-			HashMap<String, List<String>> graph = new HashMap<>();  //why?
-			queue.offer(beginWord);
-			//wordSet.remove(beginWord);
-			boolean isOver = false;
-			while (!queue.isEmpty()) {
-				Set<String> levelVisited = new HashSet<>();
-				int size = queue.size();
-				while (size-- > 0) {
-					String cur = queue.poll();
-					List<String> nexts = convert(cur, wordSet);
-					for (String next : nexts) {
-						if (next.equals(endWord)) {
-							isOver = true;
-						}
-						if (!wordSet.contains(next)) {
-							continue;
-						}
-						List<String> one;
-						if (levelVisited.add(next)) {   //true means levelVisited not contains
-							if (!graph.containsKey(next)) {
-								one = new ArrayList<>();
-								graph.put(next, one);
-							} else {
-								one = graph.get(next);
-							}
-							queue.offer(next);
+		//also return all shortest path
+		//first calculation the shortest length;
+		List<List<String>> res = new ArrayList<>();
+		HashSet<String> wordSet = new HashSet<>();
+		for (String str : wordList) {
+			wordSet.add(str);
+		}
+		Queue<String> queue = new LinkedList<>();
+		HashMap<String, List<String>> graph = new HashMap<>();  //why?
+		queue.offer(beginWord);
+		//wordSet.remove(beginWord);
+		boolean isOver = false;
+		while (!queue.isEmpty()) {
+			Set<String> levelVisited = new HashSet<>();
+			int size = queue.size();
+			while (size-- > 0) {
+				String cur = queue.poll();
+				List<String> nexts = convert(cur, wordSet);
+				for (String next : nexts) {
+					if (next.equals(endWord)) {
+						isOver = true;
+					}
+					if (!wordSet.contains(next)) {
+						continue;
+					}
+					List<String> one;
+					if (levelVisited.add(next)) {   //true means levelVisited not contains
+						if (!graph.containsKey(next)) {
+							one = new ArrayList<>();
+							graph.put(next, one);
 						} else {
 							one = graph.get(next);
 						}
-						one.add(cur);
-						
+						queue.offer(next);
+					} else {
+						one = graph.get(next);
 					}
-				}
-				wordSet.removeAll(levelVisited);
-				
-				if (isOver) { //recover all the paths from the graph
-					List<String> path = new LinkedList<String>();
-					path.add(endWord);
-					dfs(res, graph, endWord, beginWord, path);
-					return res;
+					one.add(cur);
 					
 				}
-				
 			}
-			return res;
-		}
-		
-		private void dfs(List<List<String>> res, HashMap<String, List<String>> graph, String cur,
-				String end, List<String> path) {
-			if (cur.equals(end)) {
-				res.add(new ArrayList<>(path));
-				return;
-				
-			}
-			List<String> nexts = graph.get(cur);
-			for (String next : nexts) {
-				path.add(0, next);
-				dfs(res, graph, next, end, path);
-				path.remove(0);
+			wordSet.removeAll(levelVisited);
+			
+			if (isOver) { //recover all the paths from the graph
+				List<String> path = new LinkedList<String>();
+				path.add(endWord);
+				dfs(res, graph, endWord, beginWord, path);
+				return res;
 				
 			}
 			
 		}
+		return res;
+	}
+	
+	private void dfs(List<List<String>> res, HashMap<String, List<String>> graph, String cur,
+			String end, List<String> path) {
+		if (cur.equals(end)) {
+			res.add(new ArrayList<>(path));
+			return;
+			
+		}
+		List<String> nexts = graph.get(cur);
+		for (String next : nexts) {
+			path.add(0, next);
+			dfs(res, graph, next, end, path);
+			path.remove(0);
+			
+		}
 		
-		private List<String> convert(String cur, Set<String> dict) {
-			List<String> res = new ArrayList<>();
-			for (int i = 0; i < cur.length(); i++) {
-				char[] cc = cur.toCharArray();
-				char temp = cc[i];
-				for (char c = 'a'; c <= 'z'; c++) {
-					cc[i] = c;
-					String str = String.valueOf(cc);
-					if (c != temp && dict.contains(str)) {
-						res.add(str);
-					}
-					
+	}
+	
+	private List<String> convert(String cur, Set<String> dict) {
+		List<String> res = new ArrayList<>();
+		for (int i = 0; i < cur.length(); i++) {
+			char[] cc = cur.toCharArray();
+			char temp = cc[i];
+			for (char c = 'a'; c <= 'z'; c++) {
+				cc[i] = c;
+				String str = String.valueOf(cc);
+				if (c != temp && dict.contains(str)) {
+					res.add(str);
 				}
 				
 			}
-			return res;
+			
 		}
+		return res;
 	}
+}
 //leetcode submit region end(Prohibit modification and deletion)
 }

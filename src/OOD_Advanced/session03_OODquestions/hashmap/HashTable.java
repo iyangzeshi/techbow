@@ -11,9 +11,34 @@ import java.util.List;
 //Date: 2020-09-03 星期四 1:07
 public class HashTable<K, V> {
 	
+	public static void main(String[] args) {
+		HashTable<String, Integer> table = new HashTable<String, Integer>();
+		String[] keys = {"abc", "xyz", "abc", "vv", "x"};
+		Integer[] values = {1, 10, 2, 5, null};
+		int len = keys.length;
+		
+		System.out.println("table.get(\"\") is " + table.get(""));
+		System.out.println("table.get(null) is " + table.get(null));
+		System.out.println();
+		for (int i = 0; i < len; i++) {
+			table.put(keys[i], values[i]);
+			Integer val = table.get(keys[i]);
+			System.out.println("put " + "(" + keys[i] + ", " + val + ")");
+		}
+		System.out.println();
+		
+		System.out.println("table.get(\"\") is " + table.get(""));
+		System.out.println();
+		
+		for (String key : keys) {
+			System.out.println("key: " + key + " value: " + table.get(key));
+		}
+	}
+	
 	private static final double LOAD_FACTOR = 0.77d;
 	private int MAX_SIZE = 256;
 	private List<Cell<K, V>>[] items;
+	
 	private int size;
 	
 	public HashTable() {
@@ -78,29 +103,4 @@ public class HashTable<K, V> {
 		}
 		this.items = newItems;
 	}
-	
-	public static void main(String[] args) {
-		HashTable<String, Integer> table = new HashTable<String, Integer>();
-		String[] keys = {"abc", "xyz", "abc", "vv", "x"};
-		Integer[] values = {1, 10, 2, 5, null};
-		int len = keys.length;
-		
-		System.out.println("table.get(\"\") is " + table.get(""));
-		System.out.println("table.get(null) is " + table.get(null));
-		System.out.println();
-		for (int i = 0; i < len; i++) {
-			table.put(keys[i], values[i]);
-			Integer val = table.get(keys[i]);
-			System.out.println("put " + "(" + keys[i] + ", " + val + ")");
-		}
-		System.out.println();
-		
-		System.out.println("table.get(\"\") is " + table.get(""));
-		System.out.println();
-		
-		for (String key : keys) {
-			System.out.println("key: " + key + " value: " + table.get(key));
-		}
-	}
 }
-

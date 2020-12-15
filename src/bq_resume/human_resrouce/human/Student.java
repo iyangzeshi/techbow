@@ -12,15 +12,15 @@ public class Student extends People {
         super(id, name);
         position = Position.STUDENT;
     }
-
+    
     @Override
     public void onSupervisorMessageReceived(String message) {
-        System.out.printf("%s : 收到如下信息： %s %n",name,message);
+        System.out.printf("%s : 收到如下信息： %s %n", name, message);
     }
 
     @Override
     public void onReportersMessageReceived(String message) {
-        //TODO
+        System.out.printf("%s : 收到如下信息： %s %n", name, message);
     }
     
 }

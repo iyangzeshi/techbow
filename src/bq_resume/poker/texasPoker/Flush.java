@@ -8,6 +8,7 @@ import java.util.List;
  * Created by FLK on 2020-01-11.
  */
 public class Flush extends Pattern {
+    
     public Flush(@NotNull final String userId, @NotNull final List<Card> cards) {
         super(PatternValues.Flush, userId, cards);
     }

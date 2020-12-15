@@ -11,11 +11,27 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0092ReverseLinkedListIi.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0092ReverseLinkedListIi.java" />
+              <option name="questionId" value="92" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0126WordLadderIi.java">
           <value>
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0126WordLadderIi.java" />
               <option name="questionId" value="126" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0215KthLargestElementInAnArray.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0215KthLargestElementInAnArray.java" />
+              <option name="questionId" value="215" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -43,6 +59,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0347TopKFrequentElements.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0347TopKFrequentElements.java" />
+              <option name="questionId" value="347" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0377CombinationSumIv.java">
           <value>
             <LeetcodeEditor>
@@ -51,11 +75,35 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0378KthSmallestElementInASortedMatrix.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0378KthSmallestElementInASortedMatrix.java" />
+              <option name="questionId" value="378" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0554BrickWall.java">
           <value>
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0554BrickWall.java" />
               <option name="questionId" value="554" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0642DesignSearchAutocompleteSystem.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0642DesignSearchAutocompleteSystem.java" />
+              <option name="questionId" value="642" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0692TopKFrequentWords.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/../leetcode_practice/src/leetcode/editor/en/Leetcode0692TopKFrequentWords.java" />
+              <option name="questionId" value="692" />
             </LeetcodeEditor>
           </value>
         </entry>

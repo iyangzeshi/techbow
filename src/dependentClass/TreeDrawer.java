@@ -105,7 +105,7 @@ public class TreeDrawer {
 		
 		{
 			System.out.println("build a binary by String like leetcode.com, # as null pointer");
-			String data = "1,2,3,#,4,#,#,5";
+			String data = "15, 12, 19,10,13,17,23,9,11";
 			// TreeGenerator from SuanFaGe
 			TreeNode root = TreeGenerator.deserialize(data);
 			TreeDrawer.draw(root);

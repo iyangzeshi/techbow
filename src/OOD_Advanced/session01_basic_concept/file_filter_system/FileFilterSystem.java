@@ -6,6 +6,7 @@ package OOD_Advanced.session01_basic_concept.file_filter_system;
 //Author: Zeshi(Jesse) Yang
 //Date: 2020-09-02 星期三 18:26
 
+import OOD_Advanced.session01_basic_concept.file_filter_system.fiter_condition.FilterCondition;
 import java.util.LinkedList;
 import java.util.List;
 /*
@@ -28,7 +29,6 @@ public final class FileFilterSystem {
 				res.add(f);
 			}
 		}
-		
 		return res;
 	}
 	
@@ -48,4 +48,3 @@ public final class FileFilterSystem {
 		return res;
 	}
 }
-

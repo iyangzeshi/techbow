@@ -6,7 +6,7 @@ public class Unit {
 	double exponent;
 	
 	public double eval(int x) {
-		// return (long) (coefficient) * Math.pow(x, exponent);
+		// return (long) (coefficient) * Math.pow(x, exponent), a_i * x ^ i
 		return coefficient * Math.pow(x, exponent);
 	}
 }

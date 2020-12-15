@@ -7,6 +7,8 @@
       <excludeFolder url="file://$MODULE_DIR$/src/OOD_Advanced/session01_basic_concept/myImmurtable" />
       <excludeFolder url="file://$MODULE_DIR$/src/bq_resume/class1/poker/texasPoker" />
       <excludeFolder url="file://$MODULE_DIR$/src/bq_resume/poker/texasPoker" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dictionaries" />
+      <excludeFolder url="file://$MODULE_DIR$/.gradle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

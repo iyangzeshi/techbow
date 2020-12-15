@@ -25,11 +25,11 @@ public class MinBucket {
 				return 0;
 			}
 		}
-		String str = "null";
 		dfs(nums, k, 0, 0, 1, 0);
 		return min;
 	}
 	
+	// hello
 	private void dfs(int[] nums, int k, int idx, int count, int bucket, int curSum) {
 		// base case - success
 		if (count == nums.length && curSum <= k) {

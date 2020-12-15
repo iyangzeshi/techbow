@@ -10,7 +10,6 @@ public class Address {
 	final State state;
 	final int zipcode; // 这个最重要
 	
-	//TODO: User Builder Design Pattern here
 	public Address(final String streetName, final String city, final State state,
 			final int zipcode) {
 		this.streetName = streetName;

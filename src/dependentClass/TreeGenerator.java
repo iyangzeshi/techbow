@@ -45,7 +45,8 @@ public class TreeGenerator { // LC449
 	// Decodes your encoded data to tree.
 	// 输入String， 输入TreeNode, 比如说是"2,1,3"，有子树是null的用null代替，比如"2,null,3"
 	public static TreeNode deserialize(String data) {
-		String str = data.replaceAll("\\s*", "");
+		String data1 = data.replaceAll("#", "null");
+		String str = data1.replaceAll("\\s*", "");
 		String ss[] = str.split(",");
 		if (ss.length == 0) {
 			throw new IllegalArgumentException();

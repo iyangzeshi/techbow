@@ -28,7 +28,7 @@ public class PeekingIterator implements Iterator<Integer> {
 	}
 	
 	// hasNext() and next() should behave the same as in the Iterator interface
-	// override tehm if needed
+	// override them if needed
 	@Override
 	public boolean hasNext() {
 		if (peek != null) {

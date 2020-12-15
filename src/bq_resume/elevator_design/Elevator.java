@@ -11,18 +11,15 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class Elevator {
-
+    
     private final String id;
-
+    
     private final int capacity;
     
     /**
-     *    1 --> 5 --> 3 --> 6 --> 4
-     *
-     *    1.  Queue - FIFO
-     *    2.  1 --> 5 --> 6 --> 4 --> 3
-     *    Up: minHeap
-     *    Down: maxHeap
+     * 1 --> 5 --> 3 --> 6 --> 4
+     * <p>
+     * 1.  Queue - FIFO 2.  1 --> 5 --> 6 --> 4 --> 3 Up: minHeap Down: maxHeap
      */
     
     private final PriorityQueue<Integer> upTasks; // minHeap
@@ -32,16 +29,7 @@ public class Elevator {
     private Direction currentDirection;
     private int currentLevelNumber;
     
-    public Direction getCurrentDirection() {
-        return currentDirection;
-    }
-
-
-    public int getCurrentLevelNumber() {
-        return currentLevelNumber;
-    }
-    
-    public Elevator(final String id, final int capacity, int MAX_FLOOR){
+    public Elevator(final String id, final int capacity, int MAX_FLOOR) {
         this.id = id;
         this.capacity = capacity;
         this.MAX_FLOOR = MAX_FLOOR;
@@ -50,77 +38,80 @@ public class Elevator {
         downTasks = new PriorityQueue<>((r1, r2) -> (r2 - r1));
         initInternalButtons();
     }
-
+    
+    public Direction getCurrentDirection() {
+        return currentDirection;
+    }
+    
+    public int getCurrentLevelNumber() {
+        return currentLevelNumber;
+    }
+    
     private void initInternalButtons() {
         for (int i = 1; i <= MAX_FLOOR; i++) {
             internalButtons.add(new InternalButton(id + "-" + i, i, this));
         }
     }
-
-
+    
     public boolean handleInternalRequest(final Request request) {
         //Check Edge case
-        if (!checkVaildRequest(request)) return false;
-
+        if (!checkValidRequest(request)) {
+            return false;
+        }
+        
         // Compare the request with current Level, if larger -> up request, else down Request
         final int requestLevelNumber = request.getLevelNumber();
-
+        
         //Handle the task according to the current level
-        if(requestLevelNumber > currentLevelNumber && currentLevelNumber != DOWN) {
+        if (requestLevelNumber > currentLevelNumber && currentLevelNumber != DOWN) {
             upTasks.offer(requestLevelNumber);
             return true;
-        } else if(requestLevelNumber < currentLevelNumber && currentLevelNumber != UP) {
+        } else if (requestLevelNumber < currentLevelNumber && currentLevelNumber != UP) {
             downTasks.offer(requestLevelNumber);
             return true;
         }
-
+        
         return false;
     }
-
-
+    
     /**
-     *  Try {
-     *
-     *      elevator.handleExternalRequest(request);
-     *
-     *  } catch (InvalidRequestException e){
-     *
-     *      //Do something specific to this exception;
-     *  }
-     *
-     *
      * @param externalRequest
      * @throws InvalidRequestException
      */
-    public void handleExternalRequest (final ExternalRequest externalRequest) throws
+    public void handleExternalRequest(final ExternalRequest externalRequest) throws
             InvalidRequestException {
-        if(!checkVaildRequest(externalRequest)) return;
-
+        if (!checkValidRequest(externalRequest)) {
+            return;
+        }
+        
         final int requestLevelNumber = externalRequest.getLevelNumber();
-
-        if(externalRequest.getDirection() == Direction.UP) { // 电梯在向上走的时候
-            if(externalRequest.getLevelNumber() > currentLevelNumber && currentDirection != Direction.DOWN ) {
+        
+        if (externalRequest.getDirection() == Direction.UP) { // 电梯在向上走的时候
+            if (externalRequest.getLevelNumber() > currentLevelNumber
+                    && currentDirection != Direction.DOWN) {
                 upTasks.offer(requestLevelNumber);
             } else {
                 throw new InvalidRequestException("This Up Request is Invalid"); // 更方便debug
             }
-        } else if(externalRequest.getDirection() == Direction.DOWN) {
-            if(externalRequest.getLevelNumber() < currentLevelNumber && currentLevelNumber != UP) {
+        } else if (externalRequest.getDirection() == Direction.DOWN) {
+            if (externalRequest.getLevelNumber() < currentLevelNumber && currentLevelNumber != UP) {
                 downTasks.offer(requestLevelNumber);
             } else {
                 throw new InvalidRequestException("This Down Request is Invalid"); // 更方便debug
             }
         }
     }
-
-    private boolean checkVaildRequest(Request request) {
-        if (request == null) return false;
-
+    
+    private boolean checkValidRequest(Request request) {
+        if (request == null) {
+            return false;
+        }
+        
         final Integer requestLevelNumber = request.getLevelNumber();
-
-        if(requestLevelNumber < 1 || requestLevelNumber > MAX_FLOOR){
+        
+        if (requestLevelNumber < 1 || requestLevelNumber > MAX_FLOOR) {
             //Edge cases
-
+            
             // Log.info("Elevator: The request is invalid");
             return false;
         } else if (requestLevelNumber == currentLevelNumber
@@ -130,40 +121,41 @@ public class Elevator {
             // Log.info("Elevator: The request is duplicate");
             return false;
         }
-
+        
         return true;
     }
-
+    
     //Elevator Move Up
-    public void moveUp(){
+    public void moveUp() {
         currentDirection = Direction.UP;
-
-        while(!upTasks.isEmpty()){
+        
+        while (!upTasks.isEmpty()) {
             currentLevelNumber = upTasks.poll();
         }
-
+        
         currentDirection = Direction.STOP;
     }
-
+    
     //Elevator Move down
-    public void moveDown(){
+    public void moveDown() {
         currentDirection = Direction.DOWN;
-        while(!downTasks.isEmpty()){
+        while (!downTasks.isEmpty()) {
             currentLevelNumber = downTasks.poll();
         }
-
+        
         currentDirection = Direction.STOP;
     }
-
-    public void run(){
-        if(currentDirection == Direction.STOP){
+    
+    public void run() {
+        if (currentDirection == Direction.STOP) {
             while (!upTasks.isEmpty()) {
                 moveUp();
             }
-
-            while(!downTasks.isEmpty()){
+            
+            while (!downTasks.isEmpty()) {
                 moveDown();
             }
         }
     }
+    
 }

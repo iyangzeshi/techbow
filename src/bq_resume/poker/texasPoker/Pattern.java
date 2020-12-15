@@ -7,6 +7,7 @@ import java.util.List;
  * Created by FLK on 2020-01-11.
  */
 public abstract class Pattern<Card> implements Comparable<Pattern>{
+    
     protected final PatternValues patternValue;
 
     protected final String userId;

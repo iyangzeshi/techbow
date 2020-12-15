@@ -1,3 +1,0 @@
-field是属于class的，父类和子类的field不会相互覆盖，声明成什么数据类型，就会调用那个数据类型的field
-
-method是share的，子类的method会覆盖父类的method

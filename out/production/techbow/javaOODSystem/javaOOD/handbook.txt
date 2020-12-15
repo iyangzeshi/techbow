@@ -1,7 +1,0 @@
-step0: clarify
-step1: find nouns and verbs
-step2: classes
-step3: relationship(comprise, extend) vs design pattern
-step4: for Class, fields & methods
-step5: public private → outside
-step6: ? concurrency  + generics
