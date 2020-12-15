@@ -1,0 +1,6 @@
+题目概述：已知有不同种类的手环，
+1. 没有显示屏 2. 有显示屏
+getBattery(), display remaining Battery()， 要求deisgn 手环API: displayBattery()
+
+显示电量的方法
+屏幕，声音，LED等，蓝牙传到手机上，震动vibrate
