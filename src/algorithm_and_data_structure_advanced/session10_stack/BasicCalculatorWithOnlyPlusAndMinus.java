@@ -8,17 +8,23 @@ package algorithm_and_data_structure_advanced.session10_stack;
 //Date: 2020-10-28 星期三 12:51
 public class BasicCalculatorWithOnlyPlusAndMinus {
 	
+	public static void main(String[] args) {
+		String s = " 1 0+ 2";
+		int ans = calculator1(s);
+		System.out.println(ans);
+	}
+	
+	// 每次遇到 +- 法的时候，计算值
 	public static int calculator1(String s) {
 		if (s == null || s.length() == 0) {
 			return 0;
 		}
-		int ans = 0;
+		int res = 0;
 		int val = 0;
-		int i = 0; // pointer to traverse the string
 		char operator = '+';
 		s = s + "+0";
 		int len = s.length();
-		for (i = 0; i < len; i++) {
+		for (int i = 0; i < len; i++) { // int i pointer to traverse the string
 			char ch = s.charAt(i);
 			if (ch == ' ') {
 				continue;
@@ -30,27 +36,27 @@ public class BasicCalculatorWithOnlyPlusAndMinus {
 				val = Integer.parseInt(s.substring(i, j));
 				i = j - 1;
 			} else if (ch == '+' || ch == '-') {
-				ans = (operator == '+' ? ans + val : ans - val);
+				res = (operator == '+' ? res + val : res - val);
 				operator = ch;
 			} else {
 				throw new IllegalArgumentException("invalid input");
 			}
 		}
-		return ans;
+		return res;
 	}
 	
+	// 每次遇到 完整的数字的时候，计算值
 	public static int calculator2(String s) {
 		if (s == null || s.length() == 0) {
 			return 0;
 		}
-		int ans = 0;
+		int res = 0;
 		int val = 0;
-		int i = 0; // pointer to traverse the string
 		char operator = '+';
 		// s = s + "+0";
 		int len = s.length();
 		
-		for (i = 0; i < len; i++) {
+		for (int i = 0; i < len; i++) {// int i pointer to traverse the string
 			char ch = s.charAt(i);
 			if (ch == ' ') {
 				continue;
@@ -61,20 +67,14 @@ public class BasicCalculatorWithOnlyPlusAndMinus {
 				}
 				val = Integer.parseInt(s.substring(i, j));
 				i = j - 1;
-				ans = (operator == '+' ? ans + val : ans - val);
+				res = (operator == '+' ? res + val : res - val);
 			} else if (ch == '+' || ch == '-') {
-				// ans = (operator == '+' ? ans + val : ans - val);
+				// res = (operator == '+' ? res + val : res - val);
 				operator = ch;
 			} else {
 				throw new IllegalArgumentException("invalid input");
 			}
 		}
-		return ans;
-	}
-	
-	public static void main(String[] args) {
-		String s = " 1   ";
-		int ans = calculator1(s);
-		System.out.println(ans);
+		return res;
 	}
 }

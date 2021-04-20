@@ -1,4 +1,4 @@
-package algorithm_and_data_structure_basic.session02_sort_algorithm;
+package algorithm_and_data_structure_basic.session02_sort_algorithm.count_sort;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,15 +18,15 @@ public class CountSort {
         char[] arr = {'g', 'e', 'e', 'k', 's', 'f', 'o', 'r', 'g', 'e', 'e', 'k', 's'};
         System.out.println(Arrays.toString(arr));
         sort(arr);
+        System.out.println("Sorted character array is ");
         System.out.println(Arrays.toString(arr));
-        System.out.print("Sorted character array is ");
     }
     
     public static void sort(char[] arr) {
         int len = arr.length;
         char[] output = new char[len];
     
-        Map<Character, Integer> countMap = new HashMap<>();
+        Map<Character, Integer> countMap = new HashMap<>(); // key - char, value count
         for (char ch : arr) {
             countMap.put(ch, countMap.getOrDefault(ch, 0) + 1);
         }
@@ -41,4 +41,3 @@ public class CountSort {
     
 }
 /*This code is contributed by Rajat Mishra */
-

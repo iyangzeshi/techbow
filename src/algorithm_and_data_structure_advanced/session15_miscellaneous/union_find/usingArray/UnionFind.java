@@ -14,28 +14,28 @@ import java.util.Arrays;
 // if number of nodes are specified. 里面存的是node的index
 public final class UnionFind {
 
-    private int[] parents;
-    private int[] sizes;
+    private int[] parent;
+    private int[] size;
     // private int defaultValue = -1;
 
     public UnionFind(int n) {
-        this.parents = new int[n]; // index of this node's parent
+        this.parent = new int[n]; // index of this node's parent
         // Arrays.fill(parents, defaultValue); // 有可能会在某个点重复设置为陆地， -1表示还没设置过为陆地
         for (int i = 0; i < n; i++) {
-            parents[i] = i;
+            parent[i] = i;
         }
-        this.sizes = new int[n];
-        Arrays.fill(this.sizes, 1);
+        this.size = new int[n];
+        Arrays.fill(this.size, 1);
     }
 
     // find the start ancestor of the node p
     private int findRoot(int p) {
         int cur = p;
-        while (cur != parents[cur]) {
-            parents[cur] = parents[parents[cur]];
-            cur = parents[cur];
+        while (cur != parent[cur]) {
+            parent[cur] = parent[parent[cur]];
+            cur = parent[cur];
         }
-        parents[p] = cur;
+        parent[p] = cur;
         return cur;
     }
 
@@ -51,12 +51,12 @@ public final class UnionFind {
         if (rootP == rootQ) {
             return;
         }
-        if (sizes[rootP] < sizes[rootQ]) { // p -> q
-            parents[rootP] = rootQ;
-            sizes[rootQ] += sizes[rootP];
+        if (size[rootP] < size[rootQ]) { // p -> q
+            parent[rootP] = rootQ;
+            size[rootQ] += size[rootP];
         } else { // q -> p
-            parents[rootQ] = rootP;
-            sizes[rootP] += sizes[rootQ];
+            parent[rootQ] = rootP;
+            size[rootP] += size[rootQ];
         }
     }
 }

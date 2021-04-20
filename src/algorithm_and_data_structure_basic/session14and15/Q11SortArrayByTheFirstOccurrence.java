@@ -3,6 +3,7 @@ package algorithm_and_data_structure_basic.session14and15;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Map;
 
 /* Sort an array by the order defined by the first/last occurrence */
 public class Q11SortArrayByTheFirstOccurrence {
@@ -54,7 +55,7 @@ public class Q11SortArrayByTheFirstOccurrence {
 			return;
 		}
 		// general case
-		HashMap<Integer, Integer> occur = new HashMap<>();
+		Map<Integer, Integer> occur = new HashMap<>();
 		for (int i = 0; i < nums.length; i++) {
 			if (!occur.containsKey(nums[i])) {
 				occur.put(nums[i], i);
@@ -75,7 +76,7 @@ public class Q11SortArrayByTheFirstOccurrence {
 			return;
 		}
 		// general case
-		HashMap<Integer, Integer> occur = new HashMap<>();
+		Map<Integer, Integer> occur = new HashMap<>();
 		for (int i = 0; i < nums.length; i++) {
 			if (!occur.containsKey(nums[i])) {
 				occur.put(nums[i], i);
@@ -87,7 +88,7 @@ public class Q11SortArrayByTheFirstOccurrence {
 	//实现Comparator接口, 必须写在class Session14and15Q11外面，或者另外写一个java文件
 	static class MyComparator implements Comparator<Integer> {
 		
-		HashMap<Integer, Integer> occur;
+		Map<Integer, Integer> occur;
 		
 		public MyComparator(Integer[] nums) {
 			occur = new HashMap<>();

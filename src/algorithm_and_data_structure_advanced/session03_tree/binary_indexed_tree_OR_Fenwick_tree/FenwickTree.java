@@ -15,6 +15,11 @@ public class FenwickTree {
         sums = new int[n + 1];
     }
     
+    /** sum from array[from] to array[to], both from and to are inclusive*/
+    public int rangeSum(int from, int to) {
+        return query(to) - query(from - 1);
+    }
+    
     /** return sum from array[1] to array[index] (inclusively), T(n) = O(lg(n))*/
     public int query(int index) {
         int res = 0;
@@ -35,11 +40,6 @@ public class FenwickTree {
     /** return the lowest 1, T(n) = O(1)*/
     private int lowbit(int index) {
         return index & -index;
-    }
-    
-    /** sum from array[from] to array[to], both from and to are inclusive*/
-    private int rangeSum(int from, int to) {
-        return query(to) - query(from - 1);
     }
     
 }

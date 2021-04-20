@@ -29,7 +29,6 @@ public final class FileFilterSystem {
 				res.add(f);
 			}
 		}
-		
 		return res;
 	}
 	
@@ -49,4 +48,3 @@ public final class FileFilterSystem {
 		return res;
 	}
 }
-
