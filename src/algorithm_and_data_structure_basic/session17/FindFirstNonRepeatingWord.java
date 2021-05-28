@@ -36,7 +36,7 @@ public class FindFirstNonRepeatingWord {
         return res;
     }
     
-    // O(1)
+    // T(n) = O(1)
     private String addOneWordAndFindfirstNonRepeatingWord(String word) {
         if (!wordToNode.containsKey(word)) { // not contains
             Node cur = new Node(word);
