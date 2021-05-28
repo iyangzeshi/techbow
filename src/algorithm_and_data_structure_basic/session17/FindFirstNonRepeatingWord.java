@@ -22,7 +22,7 @@ public class FindFirstNonRepeatingWord {
     Map<String, Node> wordToNode;
     DoubleList list;
     
-    public List<String> inputStramOfWord(List<String> words) {
+    public List<String> inputStramOfWord(List<String> words) { // 假装这个List<String> words是stram
         if (words.size() == 0) {
             return null;
         }
