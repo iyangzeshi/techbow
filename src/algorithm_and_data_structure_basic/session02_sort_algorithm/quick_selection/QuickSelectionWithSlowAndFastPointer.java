@@ -35,8 +35,7 @@ public class QuickSelectionWithSlowAndFastPointer {
          * [fast, end) to check
          */
         int slow = start;
-        int fast;
-        for (fast = start; fast < end; fast++) {
+        for (int fast = start; fast < end; fast++) {
             if (nums[fast] < pivot) {
                 swap(nums, slow, fast);
                 slow++;
