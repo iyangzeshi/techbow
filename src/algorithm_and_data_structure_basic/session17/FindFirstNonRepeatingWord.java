@@ -1,5 +1,6 @@
 package algorithm_and_data_structure_basic.session17;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,32 +11,40 @@ import java.util.Map;
 //Description:
 //Author: Zeshi(Jesse) Yang
 //Date: 2021-04-29 星期四 11:26
-public class FindFirstNonRepeatingCharacter {
+public class FindFirstNonRepeatingWord {
     
     /*
     key is Character, Node is corresponding Node
-    if Node just appeared once
+    case 1: <Word, Node> -- unique word and its Node
+    case 2: <Word, Null> -- word that appeared more than once
+    case 3: wordToNode does not contain the word, means this word never appeared previously
      */
     Map<String, Node> wordToNode;
     DoubleList list;
     
-    public String firstNonRepeatingWord(List<String> words) {
+    public List<String> inputStramOfWord(List<String> words) {
         if (words.size() == 0) {
             return null;
         }
-        
+        List<String> res = new ArrayList<>();
         wordToNode = new HashMap<>();
         list = new DoubleList();
-    
         for (String word : words) {
-            if (!wordToNode.containsKey(word)) {
-                Node cur = new Node(word);
-                wordToNode.put(word, cur);
-                list.addTail(cur);
-            } else if (wordToNode.get(word).word != null) {
-                list.remove(wordToNode.get(word));
-                wordToNode.put(word, new Node(null)); // put value to null表示这个值是重复的
-            }
+            String noRepeat = addOneWordAndFindfirstNonRepeatingWord(word);
+            res.add(noRepeat);
+        }
+        return res;
+    }
+    
+    // O(1)
+    private String addOneWordAndFindfirstNonRepeatingWord(String word) {
+        if (!wordToNode.containsKey(word)) { // not contains
+            Node cur = new Node(word);
+            wordToNode.put(word, cur);
+            list.addTail(cur);
+        } else if (wordToNode.get(word).word != null) { // contains and not repeat
+            list.remove(wordToNode.get(word));
+            wordToNode.put(word, new Node(null)); // put value to null表示这个值是重复的
         }
         return list.head.next.word;
     }
