@@ -1,5 +1,5 @@
 package OOD_Advanced.session03_OODquestions.hashmap;
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
 // Design a HashMap
 public class MyMap<K, V> {
 	
-	void main() {
+	public static void main() {
 		MyMap<Integer, Boolean> hashMap = new MyMap<>();
 		//    MyMap<int, boolean> 不能这么写 --> 调用了key.hashCode()，必须是一个obj instance，否则没办法表示出hashCode()
 		//    或者equals
@@ -25,60 +25,9 @@ public class MyMap<K, V> {
 		// null: throw NullPointerException()，unboxing的时候会做一个null的检查
 	}
 	
-	private static class Cell<K, V> { // static非常重要，是下面改写hashCode()和equals的必要条件
-		
-		private K key;
-		private V val;
-		
-		public Cell(K key, V val) {
-			this.key = key;
-			this.val = val;
-		}
-		
-		/* getter && setter */
-		public void setKey(K key) {
-			this.key = key;
-		}
-		
-		public K getKey() {
-			return this.key;
-		}
-		
-		public void setVal(V val) {
-			this.val = val;
-		}
-		
-		public V getVal() {
-			return this.val;
-		}
-		
-		@Override
-		public int hashCode() {
-			// hashCode defined in Object
-			// this.key可能为null,但this不可能为null
-			return this.key == null ? 0 : this.key.hashCode(); // 只想要一个stable的效果
-		}
-		
-		@Override
-		public boolean equals(Object o) {
-			if (this == o) { // 地址相同，或者两个都为null
-				return true;
-			}
-			if (!(o instanceof Cell<?, ?>)) {
-				return false;
-			}
-			Cell<K, V> that = (Cell<K, V>) o;
-			if (this.getKey() == null) {
-				return that.getKey() == null;
-			} else {
-				return this.getKey().equals(that.getKey());
-			}
-		}
-	}
-	
 	private static final double LOAD_FACTOR = 0.75d;
-	private int capacity = 256;
-	private int size; // #萝卜 radish
+	private int capacity;
+	private int size;
 	private List<Cell<K, V>>[] buckets; // each bucket is List<Cell<K, V>>
 	
 	public MyMap() {
@@ -90,17 +39,18 @@ public class MyMap<K, V> {
 			throw new IllegalArgumentException();
 		}
 		this.capacity = capacity;
-		this.buckets = new List[this.capacity];
+		
+		this.buckets = new LinkedList[this.capacity];
 		this.size = 0;
 	}
 	
 	public void put(K key, V val) { // O(k)
 		int idx = hashFunction(key);
 		if (buckets[idx] == null) {
-			buckets[idx] = new ArrayList<>();
+			buckets[idx] = new LinkedList<>();
 		}
 		List<Cell<K, V>> bucket = buckets[idx];
-		Cell<K, V> insertMe = new Cell(key, val);
+		Cell<K, V> insertMe = new Cell<>(key, val);
 		// update
 		for (Cell<K, V> cell : bucket) {
 			if (cell.equals(insertMe)) {
@@ -126,7 +76,7 @@ public class MyMap<K, V> {
 		if (bucket == null) {
 			return null;
 		}
-		Cell<K, V> getMe = new Cell<K, V>(key, null); // val随便给
+		Cell<K, V> getMe = new Cell<>(key, null); // val随便给
 		for (Cell<K, V> cell : bucket) {
 			if (cell.equals(getMe)) {
 				return cell.getVal();
@@ -141,7 +91,7 @@ public class MyMap<K, V> {
 		if (bucket == null) {
 			return false; // not exist
 		}
-		Cell<K, V> removeMe = new Cell<K, V>(key, null);
+		Cell<K, V> removeMe = new Cell<>(key, null);
 		// for (Cell cell : bucket) {
 		//     if (cell.equals(removeMe)) { // iterator里是read only！不能remove!!!
 		//         bucket.remove(cell);
@@ -162,7 +112,7 @@ public class MyMap<K, V> {
 	}
 	
 	private void swap(List<Cell<K, V>> bucket, int i, int j) {
-		Cell temp = bucket.get(i);
+		Cell<K, V> temp = bucket.get(i);
 		bucket.set(i, bucket.get(j));
 		bucket.set(j, temp);
 	}
@@ -178,11 +128,65 @@ public class MyMap<K, V> {
 			for (Cell<K, V> cell : bucket) {
 				int idx = hashFunction(cell.getKey());
 				if (newBuckets[idx] == null) {
-					newBuckets[idx] = new ArrayList<>();
+					newBuckets[idx] = new LinkedList<>();
 				}
 				newBuckets[idx].add(cell); // 一定不存在重复，不需要查重
 			}
 		}
 		this.buckets = newBuckets;
+	}
+	
+	static class Cell<K, V> {
+		
+		private K key;
+		private V val;
+		
+		public Cell(K key, V value) {
+			this.key = key;
+			this.val = value;
+		}
+		
+		@Override
+		public int hashCode() {
+			return this.key == null ? 0 : this.key.hashCode();
+		}
+		
+		@Override
+		public boolean equals(Object o) {
+			if (this == o) { // 地址相同，或者两个都为null
+				return true;
+			}
+			if (o instanceof Cell<?, ?>) { // if o is null, it is not instanceof Cell
+				Cell<K, V> that = (Cell<K, V>) o;
+				
+				if (key == null) {
+					return that.key == null;
+				} else {
+					return key.equals(that.key);
+				}
+			} else {
+				return false;
+			}
+		}
+		
+		public boolean keyEquals(K key) {
+			if (this.key == key) {
+				return true;
+			} else {
+				return this.key.equals(key);
+			}
+		}
+		
+		public K getKey() {
+			return this.key;
+		}
+		
+		public V getVal() {
+			return this.val;
+		}
+		
+		public void setVal(V val) {
+			this.val = val;
+		}
 	}
 }

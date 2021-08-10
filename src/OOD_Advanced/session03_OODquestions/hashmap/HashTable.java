@@ -80,7 +80,7 @@ public class HashTable<K, V> {
 		List<Cell<K, V>> slot = items[index];
 		for (Cell<K, V> cell: slot) {
 			if (cell.keyEquals(key)) {
-				return cell.getValue();
+				return cell.getVal();
 			}
 		}
 		return null;
@@ -102,5 +102,59 @@ public class HashTable<K, V> {
 			}
 		}
 		this.items = newItems;
+	}
+	
+	static class Cell<K, V> {
+		
+		private K key;
+		private V val;
+		
+		public Cell(K key, V value) {
+			this.key = key;
+			this.val = value;
+		}
+		
+		@Override
+		public int hashCode() {
+			return this.key == null ? 0 : this.key.hashCode();
+		}
+		
+		@Override
+		public boolean equals(Object o) {
+			if (this == o) { // 地址相同，或者两个都为null
+				return true;
+			}
+			if (o instanceof Cell<?, ?>) { // if o is null, it is not instanceof Cell
+				Cell<K, V> that = (Cell<K, V>) o;
+				
+				if (key == null) {
+					return that.key == null;
+				} else {
+					return key.equals(that.key);
+				}
+			} else {
+				return false;
+			}
+		}
+		
+		public boolean keyEquals(K key) {
+			if (this.key == key) {
+				return true;
+			} else {
+				return this.key.equals(key);
+			}
+		}
+		
+		public K getKey() {
+			return this.key;
+		}
+		
+		public V getVal() {
+			return this.val;
+		}
+		
+		public void setVal(V val) {
+			this.val = val;
+		}
 	}
 }
