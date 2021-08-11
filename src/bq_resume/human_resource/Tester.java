@@ -1,14 +1,14 @@
-package bq_resume.human_resrouce;
+package bq_resume.human_resource;
 //Project: techbow
 //Package: bq_resume.HumanResrouce
 //ClassName: Tester
 //Author: Zeshi(Jesse) Yang
 //Date: 2020-11-21 星期六 15:54
 
-import bq_resume.human_resrouce.human.Robot;
-import bq_resume.human_resrouce.human.Student;
-import bq_resume.human_resrouce.human.Teacher;
-import bq_resume.human_resrouce.human.TechbowCEO;
+import bq_resume.human_resource.human.Robot;
+import bq_resume.human_resource.human.Student;
+import bq_resume.human_resource.human.Teacher;
+import bq_resume.human_resource.human.TechbowCEO;
 
 /**
  *

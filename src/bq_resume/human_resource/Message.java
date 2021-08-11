@@ -1,4 +1,4 @@
-package bq_resume.human_resrouce;
+package bq_resume.human_resource;
 
 /**
  * Created by FLK on 2019-12-21.

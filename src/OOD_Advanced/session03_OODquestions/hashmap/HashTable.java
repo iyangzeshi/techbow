@@ -12,7 +12,7 @@ import java.util.List;
 public class HashTable<K, V> {
 	
 	public static void main(String[] args) {
-		HashTable<String, Integer> table = new HashTable<String, Integer>();
+		HashTable<String, Integer> table = new HashTable<>();
 		String[] keys = {"abc", "xyz", "abc", "vv", "x"};
 		Integer[] values = {1, 10, 2, 5, null};
 		int len = keys.length;
@@ -42,6 +42,7 @@ public class HashTable<K, V> {
 	private int size;
 	
 	public HashTable() {
+		//noinspection unchecked
 		this.items = (List<Cell<K, V>> []) new LinkedList[MAX_SIZE];
 		this.size = 0;
 	}
@@ -51,10 +52,10 @@ public class HashTable<K, V> {
 	}
 	
 	public void put(K key, V value) {
-		Cell<K, V> newCell = new Cell<K, V>(key, value);
+		Cell<K, V> newCell = new Cell<>(key, value);
 		int index = hashCodeOfKey(key);
 		if (items[index] == null) {
-			items[index] = new LinkedList<Cell<K, V>>();
+			items[index] = new LinkedList<>();
 		}
 		List<Cell<K, V>> slot = items[index];
 		for (Cell<K, V> cell: slot) {
@@ -88,6 +89,7 @@ public class HashTable<K, V> {
 	
 	private void rehashing() {
 		MAX_SIZE *= 2;
+		//noinspection unchecked
 		List<Cell<K, V>>[] newItems = (List<Cell<K, V>>[]) new LinkedList[MAX_SIZE];
 		
 		for (List<Cell<K, V>> slot: items) {
@@ -106,7 +108,7 @@ public class HashTable<K, V> {
 	
 	static class Cell<K, V> {
 		
-		private K key;
+		private final K key;
 		private V val;
 		
 		public Cell(K key, V value) {
@@ -125,6 +127,7 @@ public class HashTable<K, V> {
 				return true;
 			}
 			if (o instanceof Cell<?, ?>) { // if o is null, it is not instanceof Cell
+				//noinspection unchecked
 				Cell<K, V> that = (Cell<K, V>) o;
 				
 				if (key == null) {

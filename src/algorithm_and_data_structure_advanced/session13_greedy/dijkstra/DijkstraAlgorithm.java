@@ -1,4 +1,4 @@
-package algorithm_and_data_structure_advanced.session13_Greedy.dijkstra;
+package algorithm_and_data_structure_advanced.session13_greedy.dijkstra;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -119,6 +119,3 @@ public class DijkstraAlgorithm {
     }
 
 }
-
-
-

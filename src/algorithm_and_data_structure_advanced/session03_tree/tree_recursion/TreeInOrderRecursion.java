@@ -9,16 +9,15 @@ import dependentClass.TreeNode;
 //Author: Zeshi(Jesse) Yang
 //Date: 2020-11-16 星期一 21:06
 public class TreeInOrderRecursion {
-	
-	
-	private void inOrder(TreeNode root, TreeNode prev) {
-		if (root == null) {
-			return;
-		}
-		inOrder(root.left, prev);
-		// do sth for root
-		System.out.println(root.val);
-		inOrder(root.right, prev);
-	}
-	
+    
+    private void inOrder(TreeNode root, TreeNode prev) {
+        if (root == null) {
+            return;
+        }
+        inOrder(root.left, prev);
+        // do sth for root
+        System.out.println(root.val);
+        inOrder(root.right, prev);
+    }
+    
 }

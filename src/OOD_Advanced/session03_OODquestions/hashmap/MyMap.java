@@ -12,7 +12,7 @@ import java.util.List;
 // Design a HashMap
 public class MyMap<K, V> {
 	
-	public static void main() {
+	public static void main(String[] args) {
 		MyMap<Integer, Boolean> hashMap = new MyMap<>();
 		//    MyMap<int, boolean> 不能这么写 --> 调用了key.hashCode()，必须是一个obj instance，否则没办法表示出hashCode()
 		//    或者equals
@@ -40,6 +40,7 @@ public class MyMap<K, V> {
 		}
 		this.capacity = capacity;
 		
+		//noinspection unchecked
 		this.buckets = new LinkedList[this.capacity];
 		this.size = 0;
 	}
@@ -120,6 +121,7 @@ public class MyMap<K, V> {
 	// 纯internal implementation --> 用private
 	private void rehashing() { // O(n)  n: total # of radish
 		this.capacity *= 2;
+		//noinspection unchecked
 		List<Cell<K, V>>[] newBuckets = (List<Cell<K, V>>[]) new LinkedList[this.capacity];
 		for (List<Cell<K, V>> bucket : buckets) {
 			if (bucket == null) {
@@ -138,7 +140,7 @@ public class MyMap<K, V> {
 	
 	static class Cell<K, V> {
 		
-		private K key;
+		private final K key;
 		private V val;
 		
 		public Cell(K key, V value) {
@@ -157,7 +159,7 @@ public class MyMap<K, V> {
 				return true;
 			}
 			if (o instanceof Cell<?, ?>) { // if o is null, it is not instanceof Cell
-				Cell<K, V> that = (Cell<K, V>) o;
+				@SuppressWarnings("unchecked") Cell<K, V> that = (Cell<K, V>) o;
 				
 				if (key == null) {
 					return that.key == null;

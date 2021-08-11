@@ -7,6 +7,9 @@ package algorithm_and_data_structure_advanced.session03_tree.binary_indexed_tree
 //Author: Zeshi(Jesse) Yang
 //Date: 2021-03-02 星期二 21:02
 // fenwick tree又叫binary indexed tree，因为这个数据结构是前者发明的
+/*
+index of the fenwick tree is from 1 to n
+ */
 public class FenwickTree {
     
     private final int[] sums;

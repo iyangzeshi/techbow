@@ -1,4 +1,4 @@
-package bq_resume.human_resrouce.messageReceiverInterface;
+package bq_resume.human_resource.messageReceiverInterface;
 
 /**
  * Created by FLK on 2019-12-21.

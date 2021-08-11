@@ -1,6 +1,6 @@
-package bq_resume.human_resrouce.human;
+package bq_resume.human_resource.human;
 
-import bq_resume.human_resrouce.Position;
+import bq_resume.human_resource.Position;
 
 /**
  * Created by FLK on 2019-12-21.

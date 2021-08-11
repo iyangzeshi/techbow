@@ -1,4 +1,4 @@
-package algorithm_and_data_structure_advanced.session13_Greedy.dijkstraByZack;
+package algorithm_and_data_structure_advanced.session13_greedy.dijkstraByZack;
 
 import java.util.ArrayList;
 import java.util.Comparator;

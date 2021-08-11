@@ -1,6 +1,6 @@
-package bq_resume.human_resrouce.human;
+package bq_resume.human_resource.human;
 
-import bq_resume.human_resrouce.messageReceiverInterface.IEmailReceiver;
+import bq_resume.human_resource.messageReceiverInterface.IEmailReceiver;
 
 /**
  * Created by FLK on 2019-12-21.

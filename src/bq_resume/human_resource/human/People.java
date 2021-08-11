@@ -1,9 +1,9 @@
-package bq_resume.human_resrouce.human;
+package bq_resume.human_resource.human;
 
-import bq_resume.human_resrouce.messageReceiverInterface.IDownMessageDispatcher;
-import bq_resume.human_resrouce.messageReceiverInterface.IEmailReceiver;
-import bq_resume.human_resrouce.messageReceiverInterface.IUpMessageDispatcher;
-import bq_resume.human_resrouce.Position;
+import bq_resume.human_resource.messageReceiverInterface.IDownMessageDispatcher;
+import bq_resume.human_resource.messageReceiverInterface.IEmailReceiver;
+import bq_resume.human_resource.messageReceiverInterface.IUpMessageDispatcher;
+import bq_resume.human_resource.Position;
 import java.util.ArrayList;
 import java.util.List;
 
