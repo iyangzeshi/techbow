@@ -1,5 +1,6 @@
 package algorithm_and_data_structure_basic.session02_sort_algorithm;
 
+import com.sun.istack.internal.NotNull;
 import java.util.Arrays;
 
 //Project: techbow
@@ -62,6 +63,8 @@ public final class MergeSort {
         while (right <= end) {
             helper[index++] = nums[right++];
         }
+        String str = new StringBuilder("123").reverse().toString();
+        // (@NotNull Object src, int srcPos, @NotNull Object dest, int destPos, int length)
         System.arraycopy(helper, start, nums, start, end - start + 1);
     }
     

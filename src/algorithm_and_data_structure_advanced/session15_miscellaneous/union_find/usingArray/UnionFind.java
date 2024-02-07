@@ -42,7 +42,7 @@ public final class UnionFind {
             return p;
         }
         
-        parent[p] = findRoot(parent[p]);
+        parent[p] = findRoot(parent[p]); // head recursion
         return parent[p];
     }
 

@@ -58,7 +58,7 @@ public final class UnionFind<K> {
             return p;
         }
         
-        parent.put(p, findRoot(parent.get(p)));
+        parent.put(p, findRoot(parent.get(p))); // head recursion
         return parent.get(p);
     }
     

@@ -18,9 +18,9 @@ public class IntervalTree {
 			}
 			IntervalNode left = cur.leftNode;
 			if (left == null || left.maxEndFromSubTree < target.start) {
-				cur = cur.leftNode;
-			} else {
 				cur = cur.rightNode;
+			} else { // left.maxEndFromSubTree >= target.start
+				cur = cur.leftNode;
 			}
 		}
 		return false;

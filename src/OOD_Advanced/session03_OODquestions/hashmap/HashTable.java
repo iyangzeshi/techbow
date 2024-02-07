@@ -47,10 +47,6 @@ public class HashTable<K, V> {
 		this.size = 0;
 	}
 	
-	public int hashCodeOfKey(K key) {
-		return (key == null ? 0 : Math.abs(key.hashCode() % MAX_SIZE));
-	}
-	
 	public void put(K key, V value) {
 		Cell<K, V> newCell = new Cell<>(key, value);
 		int index = hashCodeOfKey(key);
@@ -87,6 +83,10 @@ public class HashTable<K, V> {
 		return null;
 	}
 	
+	private int hashCodeOfKey(K key) {
+		return (key == null ? 0 : Math.abs(key.hashCode() % MAX_SIZE));
+	}
+	
 	private void rehashing() {
 		MAX_SIZE *= 2;
 		//noinspection unchecked
@@ -97,7 +97,7 @@ public class HashTable<K, V> {
 				for (Cell<K, V> cell: slot) {
 					int index = hashCodeOfKey(cell.getKey());
 					if (newItems[index] == null) {
-						new LinkedList<Cell<K, V>>();
+						newItems[index] = new LinkedList<Cell<K, V>>();
 					}
 					newItems[index].add(cell);
 				}

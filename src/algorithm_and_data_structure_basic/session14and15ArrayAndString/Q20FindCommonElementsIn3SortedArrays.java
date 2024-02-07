@@ -1,4 +1,4 @@
-package algorithm_and_data_structure_basic.session14and15;
+package algorithm_and_data_structure_basic.session14and15ArrayAndString;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -171,4 +171,3 @@ public class Q20FindCommonElementsIn3SortedArrays {
 		}
 	}
 }
-

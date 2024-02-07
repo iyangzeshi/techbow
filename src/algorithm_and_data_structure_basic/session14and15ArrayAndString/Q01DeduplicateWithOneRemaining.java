@@ -1,4 +1,4 @@
-package algorithm_and_data_structure_basic.session14and15;
+package algorithm_and_data_structure_basic.session14and15ArrayAndString;
 
 /*Given sorted?/ajacent array (string), deduplicate with one remaining*/
 public class Q01DeduplicateWithOneRemaining {
