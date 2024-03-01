@@ -14,7 +14,7 @@ import java.util.List;
 public class MinHeap {
 	
 	public static void main(String[] args) {
-		int[] nums = {1, 3, 7,54, 6};
+		int[] nums = {1, 3, 7, 54, 6};
 		MinHeap minHeap = new MinHeap(nums);
 		List<Integer> list = new ArrayList<>();
 		while (!minHeap.isEmpty()) {
