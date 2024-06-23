@@ -66,5 +66,4 @@ public final class UnionFind {
             size[rootP] += size[rootQ];
         }
     }
-    
 }

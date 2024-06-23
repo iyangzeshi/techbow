@@ -12,7 +12,7 @@ import java.util.Set;
 //Author: Zeshi(Jesse) Yang
 //Date: 2020-11-16 星期一 20:47
 public class BFSTemplate<Type> {
-    public void bfs(Type root) {
+    public int bfs(Type root) {
         Set<Type> visited = new HashSet<>();
         Queue<Type> queue = new LinkedList<>(); // buffer
         queue.offer(root);
@@ -29,6 +29,7 @@ public class BFSTemplate<Type> {
             }
             minLen++;
         }
+        return minLen;
     }
 
     private Type convert(Type cur) {
